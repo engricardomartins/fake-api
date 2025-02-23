@@ -1,0 +1,5 @@
+package com.javanautas.fakeapius.infrastructure.client;
+
+public interface FakeApiClient {
+
+}

@@ -1,0 +1,5 @@
+package com.javanautas.fakeapius.apivi.dto;
+
+public class FakeApiController {
+
+}

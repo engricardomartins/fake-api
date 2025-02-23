@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.cloud-feign=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.cloud-loadbalancer=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.devtools=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.lombok=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=fake-api-us
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.4.3
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Demo project for Spring Boot
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.javanautas
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=23
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=fake-api-us
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.javanautas.fakeapius
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=GRADLE
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n

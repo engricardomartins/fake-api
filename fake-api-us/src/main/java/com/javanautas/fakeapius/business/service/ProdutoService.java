@@ -1,0 +1,114 @@
+package com.javanautas.fakeapius.business.service;
+
+import java.util.List;
+import java.util.Objects;
+
+import org.springframework.stereotype.Service;
+
+import com.javanautas.fakeapius.apivi.dto.ProductsDTO;
+import com.javanautas.fakeapius.business.converter.ProdutoConverter;
+import com.javanautas.fakeapius.infrastructure.entities.ProdutoEntity;
+import com.javanautas.fakeapius.infrastructure.repositories.ProdutoRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ProdutoService {
+
+	private final ProdutoRepository repository;
+	private final ProdutoConverter converter;
+
+	public ProdutoEntity salvaProdutos(ProdutoEntity entity) {
+		
+		try {
+			return repository.save(entity);
+		} 
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao salvar produtos" + e );
+			
+		}
+	}
+	
+	
+	public ProductsDTO salvaProdutoDTO(ProductsDTO dto) {
+		
+		try {
+			ProdutoEntity entity = converter.toEntity(dto);
+			return converter.toDTO(repository.save(entity));
+		} 
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao salvar produtos" + e );
+			
+		}
+	}
+	
+	
+	public ProductsDTO buscaProdutoPorNome(String nome) {
+		
+		try {
+			ProdutoEntity produto = repository.findByNome(nome);
+			
+			if (Objects.isNull(produto)) {
+				throw new RuntimeException("Não foi encontrado produto com o nome: " + nome);
+			}
+			return converter.toDTO(produto);
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao buscar produtos por nome: " + nome);
+		}
+	}
+	
+	
+	public List<ProductsDTO> buscaTodosProdutos() {
+		
+		try {
+			return converter.toListDTO(repository.findAll());
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao buscar todos os produtos");
+		}
+	}
+	
+	
+	public void deletaProduto(String nome) {
+		
+		try {
+			repository.deleteByNome(nome);
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao deletar produtos por nome " + nome);
+		}
+	}
+	
+	
+	public Boolean existsPorNome(String nome) {
+		
+		try {
+			return repository.existsByNome(nome);
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao buscar produtos por nome " + nome);
+		}
+	}
+	
+
+	public ProductsDTO updateProduto(String id, ProductsDTO dto) {
+		
+		try {
+			ProdutoEntity entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Id não exste no banco de dados"));
+			salvaProdutos(converter.toEntityUpdate(entity, dto, id));
+			
+			
+			System.out.println("ProdutoService - O valor do preço em dto:" + dto.getPreco());
+			System.out.println("ProdutoService - O valor do preço em entity:" + entity.getPreco());
+			
+				
+			
+			return converter.toDTO(repository.findByNome(entity.getNome()));
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Erro ao atualizar produto no banco de dados " + id);
+		}
+	}
+}

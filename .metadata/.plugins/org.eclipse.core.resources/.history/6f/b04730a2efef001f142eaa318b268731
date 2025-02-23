@@ -1,0 +1,5 @@
+package com.javanautas.fakeapius.infrastructure.entities;
+
+public class ProdutoEntity {
+
+}

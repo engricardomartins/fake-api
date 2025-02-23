@@ -1,0 +1,5 @@
+package com.javanautas.fakeapius.infrastructure.repositories;
+
+public class ProdutoRepository {
+
+}

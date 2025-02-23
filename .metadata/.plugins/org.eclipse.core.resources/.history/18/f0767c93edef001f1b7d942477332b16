@@ -1,0 +1,19 @@
+package com.javanautas.fakeapius;
+
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+@SpringBootApplication
+@EnableFeignClients
+public class FakeApiUsApplication {
+
+	private static Logger log = LoggerFactory.getLogger(FakeApiUsApplication.class);
+	
+	public static void main(String[] args) {
+		
+		SpringApplication.run(FakeApiUsApplication.class, args);
+	}
+
+}
